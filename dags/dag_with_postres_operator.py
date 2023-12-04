@@ -25,8 +25,7 @@ with DAG(
                 dag_id character varying,
                 primary key (dt, dag_id)
             )
-        """
-
+            """
     )
     task2 = PostgresOperator(
         task_id='delete_data_from_table',
@@ -39,7 +38,7 @@ with DAG(
         task_id='insert_into_table',
         postgres_conn_id='postgres_localhost',
         sql="""
-            insert into dag_runs (dt, dag_id) values ( '{{ ds }}', '{{ dag.dag_id }}')
+            insert into dag_runs (dt, dag_id) values ('{{ ds }}', '{{ dag.dag_id }}')
         """
     )
 
